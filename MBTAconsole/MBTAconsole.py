@@ -75,5 +75,10 @@ def get_longest_route():
     greatest = max(routes, key=lambda route:len(route.stops()))
     print(f"The {greatest.name()} has the greatest number of stops: {len(greatest.stops())} stops")
 
+def get_shortest_route():
+    routes = get_routes()
+    fewest = min(routes, key=lambda route:len(route.stops()))
+    print(f"The {fewest.name()} has the fewest number of stops: {len(fewest.stops())} stops")
+
 
 

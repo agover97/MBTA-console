@@ -14,6 +14,10 @@ def show_routes():
 def longest_route():
     MBTAconsole.get_longest_route()
 
+@app.command()
+def shortest_route():
+    MBTAconsole.get_shortest_route()
+
 def _version_callback(value: bool) -> None:
     if value:
         typer.echo(f"{__app_name__} v{__version__}")
