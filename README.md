@@ -65,7 +65,7 @@ Blue Line
 2) Name of subway route greatest number of stops and the number of stops on that route
 
 ```sh
-(venv) $ python3 -m MBTAconsole longest-route
+python3 -m MBTAconsole longest-route
 ```
 example output:
 
