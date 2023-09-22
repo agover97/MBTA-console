@@ -152,8 +152,24 @@ Note: Without api key tests will fail due to requests being throttled. One can a
 
 I ran out of time to complete this challange. I was able to implement the required functionaly as specified in the problem description but there are many aspects that could be improved upon including testing, documentation, code readability, etc. the following is a list of changes that should be implemented in no particular orfer
 
-1. Use API key when querying to MBTA: This is the biggest thing missing form this solution. It limits the rate at which one can run commands and prevent running the test suite in its entirety
+1. Use API key when querying to MBTA: This is the biggest thing missing form this solution. It limits the rate at which one can run commands and prevents running the test suite in its entirety.
 
-2. Load API key form txt file: Allow user to add api key to a specified file location to be used for querying. If text file not found default to using no API key
+2. Load API key from txt file: Allow user to add api key to a specified file location to be used for querying. If text file not found default to using no API key. So one doesnt have to hard code api key.
 
-3. Error handling
+3. Graceful error handling: Errors just print to console. Especially apparent when requests are being throttled due to not using API key.
+
+4. Shortest and longest path should print multiple results in case of tie.
+
+5. Significantly more testing: End to end testing was done for each command and some unit testing was done but code coverage is low. 
+
+6. Add linting.
+
+7. Add ability to install application to run without having to set environment.
+
+8. Utilize Typer to make UI more visually pleasing.
+
+9. Redudant code. Many of the functions have duplicate code, refactoring could be done.
+
+10. Use comments and change variable names to make code more readable
+
+More items could be added to this list
