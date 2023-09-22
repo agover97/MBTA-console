@@ -191,7 +191,7 @@ def get_connecting_stops():
     routes = get_routes()
     stop_dict = build_stop_dict(routes)
     connecting_stops = dict(filter(lambda x:len(x[1])>1, stop_dict.items()))
-    print("\nThe following stops connect 2 or more subwy routes:\n")
+    print("\nThe following stops connect 2 or more subway routes:\n")
     for stop, connectors in sorted(connecting_stops.items()):
         print(f"{stop} : {', '.join(connectors)}")
 
