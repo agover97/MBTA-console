@@ -10,7 +10,3 @@ def routes():
 class TestResource:
     def test_get_routes(self, routes):
         assert len(routes) == 8
-
-
-
-    
