@@ -1,4 +1,6 @@
 # MBTA-console
+>CLI to get info for the MBTA subway system
+
 Python console for querying data from MBTA API
 
 The user will be able to print to console:
@@ -13,3 +15,39 @@ The user will be able to print to console:
 each of those stops
 
 5) Rail route between two given stops
+
+![](mbta_map.jpeg)
+
+## Installation
+
+1. Download source files (e.g.)
+
+```sh
+git clone git@github.com:agover97/MBTA-console.git
+```
+
+2. Setup virtual environment 
+
+```sh
+cd rptodo_project/
+python -m venv ./venv
+source venv/bin/activate
+(venv) $
+```
+
+3. Install dependencies
+
+```sh
+(venv) $ python -m pip install -r requirements.txt
+```
+
+
+
+
+## Usage example
+
+
+
+## Testing
+
+
