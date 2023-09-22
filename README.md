@@ -148,6 +148,12 @@ python3 -m pytest tests/cli_tests.py
 
 Note: Without api key tests will fail due to requests being throttled. One can avoid this and run specific tests by commenting out other tests in test files and running the above commands. This is not ideal. See TODO
 
-## TOTO
+## TODO
 
-I ran out of time to complete this challange. I was able to implement the required functionaly as specified in the problem description but there are many aspects that could be improved including testing, documentation, code readability, etc. the following is a list of changes that I would implement given more due
+I ran out of time to complete this challange. I was able to implement the required functionaly as specified in the problem description but there are many aspects that could be improved upon including testing, documentation, code readability, etc. the following is a list of changes that should be implemented in no particular orfer
+
+1. Use API key when querying to MBTA: This is the biggest thing missing form this solution. It limits the rate at which one can run commands and prevent running the test suite in its entirety
+
+2. Load API key form txt file: Allow user to add api key to a specified file location to be used for querying. If text file not found default to using no API key
+
+3. Error handling
