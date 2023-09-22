@@ -7,10 +7,6 @@ from MBTAconsole import __app_name__, __version__, MBTAconsole
 app = typer.Typer()
 
 @app.command()
-def test_connection():
-    MBTAconsole.query_MBTA('')
-
-@app.command()
 def show_routes():
     MBTAconsole.get_long_names()
 
