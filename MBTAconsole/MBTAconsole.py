@@ -120,8 +120,7 @@ def BFS_algo(graph, source, sink):
 				new_path.append(route)
 				q.append(new_path)
 				if route == sink:
-					print(f"\n{source} to {sink} -> {', '.join(new_path[1:-1])}\n")
-					return
+					return new_path
 		visited.append(node)
 
 def find_route(start, end):
@@ -132,7 +131,8 @@ def find_route(start, end):
     connection_graph[start] = stop_dict[start]
     for route in stop_dict[end]:
          connection_graph[route].add(end)
-    BFS_algo(connection_graph,start,end)
+    path = BFS_algo(connection_graph,start,end)
+    print(f"\n{start} to {end} -> {', '.join(path[1:-1])}\n")
     
             
 
