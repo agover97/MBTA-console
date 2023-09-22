@@ -150,7 +150,7 @@ Note: Without api key tests will fail due to requests being throttled. One can a
 
 ## TODO
 
-I ran out of time to complete this challange. I was able to implement the required functionaly as specified in the problem description but there are many aspects that could be improved upon including testing, documentation, code readability, etc. the following is a list of changes that should be implemented in no particular orfer
+I ran out of time to complete this challange. I was able to implement the required functionaly as specified in the problem description but there are many aspects that could be improved upon including testing, documentation, code readability, etc. the following is a list of changes that should be implemented in no particular order
 
 1. Use API key when querying to MBTA: This is the biggest thing missing form this solution. It limits the rate at which one can run commands and prevents running the test suite in its entirety.
 
@@ -173,5 +173,7 @@ I ran out of time to complete this challange. I was able to implement the requir
 10. Use comments and change variable names to make code more readable
 
 11. Docstring function descriptions could be more clear
+
+12. Look for typos
 
 More items could be added to this list
