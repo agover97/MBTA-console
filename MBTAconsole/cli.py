@@ -1,5 +1,3 @@
-
-
 from typing import Optional
 
 import typer
@@ -10,7 +8,11 @@ app = typer.Typer()
 
 @app.command()
 def test_connection():
-    MBTAconsole.query_MBTA()
+    MBTAconsole.query_MBTA('')
+
+@app.command()
+def show_routes():
+    MBTAconsole.get_long_names()
 
 def _version_callback(value: bool) -> None:
     if value:
