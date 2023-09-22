@@ -36,12 +36,11 @@ __URL__ = "https://api-v3.mbta.com/"
 def query_MBTA(endpoint):
     try:
         response = requests.get(__URL__ + endpoint)
-        # If the response was successful, no Exception will be raised
         response.raise_for_status()
     except HTTPError as http_err:
-        print(f'HTTP error occurred: {http_err}')  # Python 3.6
+        print(f'HTTP error occurred: {http_err}') 
     except Exception as err:
-        print(f'Other error occurred: {err}')  # Python 3.6
+        print(f'Other error occurred: {err}')
     else:
         return response.json()
 
