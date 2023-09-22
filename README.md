@@ -172,4 +172,6 @@ I ran out of time to complete this challange. I was able to implement the requir
 
 10. Use comments and change variable names to make code more readable
 
+11. Docstring function descriptions could be more clear
+
 More items could be added to this list
