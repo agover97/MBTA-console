@@ -12,6 +12,11 @@ def test_version():
     assert result.exit_code == 0
     assert f"{__app_name__} v{__version__}\n" in result.stdout
 
+def test_show_route_ux():
+    result = runner.invoke(cli.app, ["show-routes"])
+    assert result.exit_code == 0
+    assert "Red Line" in result.stdout
+
 @pytest.fixture()
 def routes():
     print("setup")
