@@ -2,6 +2,7 @@ import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 import pprint
+from collections import defaultdict
 
 class Route:
     def __init__(self, name, id, stops):
@@ -79,6 +80,21 @@ def get_shortest_route():
     routes = get_routes()
     fewest = min(routes, key=lambda route:len(route.stops()))
     print(f"The {fewest.name()} has the fewest number of stops: {len(fewest.stops())} stops")
+
+def build_stop_dict(routes):
+    stop_dict = defaultdict(list)
+    for route in routes:
+        for stop in route.stops():
+            stop_dict[stop.name()].append(route.name())
+    return stop_dict
+
+def get_connecting_stops():
+    routes = get_routes()
+    stop_dict = build_stop_dict(routes)
+    connecting_stops = dict(filter(lambda x:len(x[1])>1, stop_dict.items()))
+    print("\nThe following stops connect 2 or more subwy routes:\n")
+    for stop, connectors in sorted(connecting_stops.items()):
+        print(f"{stop} : {', '.join(connectors)}")
 
 
 
