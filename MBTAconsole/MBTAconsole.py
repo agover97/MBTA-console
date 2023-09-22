@@ -109,7 +109,7 @@ def BFS_algo(graph, source, sink):
 	visited = []
 	if source == sink:
 		print("Those are the same stops")
-		return
+		return []
 	while q:
 		path = q.popleft()
 		node = path[-1]
@@ -127,11 +127,21 @@ def find_route(start, end):
     stop_dict = build_stop_dict(routes)
     connecting_stops = dict(filter(lambda x:len(x[1])>1, stop_dict.items()))
     connection_graph = build_connection_graph(connecting_stops)
-    connection_graph[start] = stop_dict[start]
-    for route in stop_dict[end]:
-         connection_graph[route].add(end)
-    path = BFS_algo(connection_graph,start,end)
-    print(f"\n{start} to {end} -> {', '.join(path[1:-1])}\n")
+    if start in stop_dict and end in stop_dict:
+        connection_graph[start] = stop_dict[start]
+        for route in stop_dict[end]:
+            connection_graph[route].add(end)
+        path = BFS_algo(connection_graph,start,end)
+        if len(path) > 2:
+            print(f"\n{start} to {end} -> {', '.join(path[1:-1])}\n")
+    else:
+        if start not in stop_dict:
+            print(f"{start} is not a valid stop")
+        if end not in stop_dict:
+            print(f"{end} is not a valid stop")
+        print(f"Please select stops from the following list. If the name of the stop contains a space use quotes \" \"")
+        for stop in sorted(stop_dict.keys()):
+             print(stop)
     
             
 
