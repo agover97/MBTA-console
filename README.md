@@ -8,36 +8,36 @@ Python console for querying data from MBTA API
 
 ## Installation
 
-1. Download source files (e.g.)
+    1. Download source files (e.g.)
 
-```sh
-git clone git@github.com:agover97/MBTA-console.git
-```
+    ```sh
+    git clone git@github.com:agover97/MBTA-console.git
+    ```
 
-2. Setup virtual environment 
+    2. Setup virtual environment 
 
-You may need to install venv on Debian/Ubuntu systems:
-```sh
-python3 --version
-apt install python[VERSION]-venv
-```
+    You may need to install venv on Debian/Ubuntu systems:
+    ```sh
+    python3 --version
+    apt install python[VERSION]-venv
+    ```
 
 
-```sh
-cd MBTA-console/
-python3 -m venv ./venv
-source venv/bin/activate
-(venv) $
-```
+    ```sh
+    cd MBTA-console/
+    python3 -m venv ./venv
+    source venv/bin/activate
+    (venv) $
+    ```
 
-3. Install dependencies
+    3. Install dependencies
 
-```sh
-(venv) $ python -m pip install -r requirements.txt
-```
+    ```sh
+    (venv) $ python -m pip install -r requirements.txt
+    ```
 
-Note: This installation setup with tested on a virtual machine running Ubuntu 22.04.3 LTS
-https://ubuntu.com/download/desktop
+    Note: This installation setup with tested on a virtual machine running Ubuntu 22.04.3 LTS
+    https://ubuntu.com/download/desktop
 
 
 ## Usage example
@@ -133,20 +133,20 @@ each of those stops
 
 ## Testing
 
-1. Follow installation setup above
+    1. Follow installation setup above
 
-2. 
+    2. Run following commands to execute tests
 
-```sh
-#move to project dir
-cd MBTA-console/
-#run all test files
-python3 -m pytest tests/*  
-#run specific test file (e.g.) cli_tests.py
-python3 -m pytest tests/cli_tests.py
-```
+    ```sh
+    #move to project dir
+    cd MBTA-console/
+    #run all test files
+    python3 -m pytest tests/*  
+    #run specific test file (e.g.) cli_tests.py
+    python3 -m pytest tests/cli_tests.py
+    ```
 
-Note: Without api key tests will fail due to requests being throttled. One can avoid this and run specific tests by commenting out other tests in test files and running the above commands. This is not ideal. 
+    Note: Without api key tests will fail due to requests being throttled. One can avoid this and run specific tests by commenting out other tests in test files and running the above commands. This is not ideal. See TODO
 
 ## TOTO
 
