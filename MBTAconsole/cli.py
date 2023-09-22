@@ -22,6 +22,11 @@ def shortest_route():
 def connecting_stops():
     MBTAconsole.get_connecting_stops()
 
+@app.command()
+def find_route(start: str, end: str):
+    MBTAconsole.find_route(start, end)
+
+
 def _version_callback(value: bool) -> None:
     if value:
         typer.echo(f"{__app_name__} v{__version__}")

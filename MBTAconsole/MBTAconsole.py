@@ -2,7 +2,8 @@ import requests
 from requests.exceptions import HTTPError
 from requests.auth import HTTPBasicAuth
 import pprint
-from collections import defaultdict
+from collections import defaultdict, deque
+from itertools import combinations
 
 class Route:
     def __init__(self, name, id, stops):
@@ -95,6 +96,47 @@ def get_connecting_stops():
     print("\nThe following stops connect 2 or more subwy routes:\n")
     for stop, connectors in sorted(connecting_stops.items()):
         print(f"{stop} : {', '.join(connectors)}")
+
+def build_connection_graph(connecting_stops):
+    connection_graph = defaultdict(set)
+    for routes in connecting_stops.values():
+        for source, dest in  combinations(routes, 2):
+            connection_graph[source].add(dest)
+            connection_graph[dest].add(source)
+    return connection_graph
+
+def BFS_algo(graph, source, sink):
+	q = deque([[source]])
+	visited = []
+	if source == sink:
+		print("Those are the same stops")
+		return
+	while q:
+		path = q.popleft()
+		node = path[-1]
+		if node not in visited:
+			for route in graph[node]:
+				new_path = list(path)
+				new_path.append(route)
+				q.append(new_path)
+				if route == sink:
+					print(f"\n{source} to {sink} -> {', '.join(new_path[1:-1])}\n")
+					return
+		visited.append(node)
+
+def find_route(start, end):
+    routes = get_routes()
+    stop_dict = build_stop_dict(routes)
+    connecting_stops = dict(filter(lambda x:len(x[1])>1, stop_dict.items()))
+    connection_graph = build_connection_graph(connecting_stops)
+    connection_graph[start] = stop_dict[start]
+    for route in stop_dict[end]:
+         connection_graph[route].add(end)
+    BFS_algo(connection_graph,start,end)
+    
+            
+
+
 
 
 
