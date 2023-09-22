@@ -17,6 +17,12 @@ def test_show_route_ux():
     assert result.exit_code == 0
     assert "Red Line" in result.stdout
 
+def test_longest_route_ux():
+    result = runner.invoke(cli.app, ["longest-route"])
+    assert result.exit_code == 0
+    assert "Green Line" in result.stdout
+
+
 @pytest.fixture()
 def routes():
     print("setup")
@@ -24,5 +30,7 @@ def routes():
     print("teardown")
 
 class TestResource:
-    def test_test_get_routes(self, routes):
+    def test_get_routes(self, routes):
         assert len(routes) == 8
+
+    

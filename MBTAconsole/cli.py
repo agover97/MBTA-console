@@ -10,6 +10,10 @@ app = typer.Typer()
 def show_routes():
     MBTAconsole.get_long_names()
 
+@app.command()
+def longest_route():
+    MBTAconsole.get_longest_route()
+
 def _version_callback(value: bool) -> None:
     if value:
         typer.echo(f"{__app_name__} v{__version__}")

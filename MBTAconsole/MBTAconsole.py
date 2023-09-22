@@ -1,5 +1,6 @@
 import requests
 from requests.exceptions import HTTPError
+from requests.auth import HTTPBasicAuth
 import pprint
 
 class Route:
@@ -31,10 +32,8 @@ class Stop:
 __URL__ = "https://api-v3.mbta.com/"
 
 def query_MBTA(endpoint):
-    token = 'af6a9e7a2d084a36889b298194e10d94'
-    headers = {'Authorization': f'Token {token}'}
     try:
-        response = requests.get(__URL__ + endpoint, headers=headers)
+        response = requests.get(__URL__ + endpoint)
         # If the response was successful, no Exception will be raised
         response.raise_for_status()
     except HTTPError as http_err:
@@ -70,4 +69,11 @@ def get_long_names():
     print("The MBTA has these subway routes:")
     for route in routes:
         print(route.name())
+
+def get_longest_route():
+    routes = get_routes()
+    greatest = max(routes, key=lambda route:len(route.stops()))
+    print(f"The {greatest.name()} has the greatest number of stops: {len(greatest.stops())} stops")
+
+
 
