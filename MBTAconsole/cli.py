@@ -35,11 +35,15 @@ def connecting_stops():
     MBTAconsole.get_connecting_stops()
 
 @app.command()
-def find_route(start: str, end: str):
+def find_route(
+    start: str, 
+    end: str,
+    avoid: Optional[str] = typer.Argument(default=None)
+    ):
     """
-    Route of subway lines connecting two stops: START, END
+    Route of subway lines connecting two stops: START, END, Avoid
     """
-    MBTAconsole.find_route(start, end)
+    MBTAconsole.find_route(start, end, avoid)
 
 
 def _version_callback(value: bool) -> None:

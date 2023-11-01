@@ -56,7 +56,7 @@ class Stop:
         return self._id
 
 __URL__ = "https://api-v3.mbta.com/"
-
+__API_KEY__ = "37e8908548ff40f784d089036879ad32"
 
 def query_MBTA(endpoint):
     """
@@ -72,8 +72,9 @@ def query_MBTA(endpoint):
     dict
         json formatted response of request
     """
+    params = {"api_key" : __API_KEY__}
     try:
-        response = requests.get(__URL__ + endpoint)
+        response = requests.get(__URL__ + endpoint, params=params)
         response.raise_for_status()
     except HTTPError as http_err:
         print(f'HTTP error occurred: {http_err}') 
@@ -251,7 +252,7 @@ def BFS_algo(graph, source, sink):
                     return new_path
         visited.append(node)
 
-def find_route(start, end):
+def find_route(start, end, avoid=""):
     """
     Find list of subway line changes to get from stop:start to stop:end
 
@@ -271,6 +272,8 @@ def find_route(start, end):
     none
     """
     routes = get_routes()
+    if avoid and avoid not in [route.name() for route in routes]:
+        print(f"{avoid} is not a valid subway line")
     stop_dict = build_stop_dict(routes)
     connecting_stops = dict(filter(lambda x:len(x[1])>1, stop_dict.items()))
     connection_graph = build_connection_graph(connecting_stops)
@@ -278,9 +281,13 @@ def find_route(start, end):
         connection_graph[start] = stop_dict[start]
         for route in stop_dict[end]:
             connection_graph[route].add(end)
+        connection_graph[avoid] = []
         path = BFS_algo(connection_graph,start,end)
-        if len(path) > 2:
-            print(f"\n{start} to {end} -> {', '.join(path[1:-1])}\n")
+        if not path:
+            print(f"No path found")
+        else:
+            if len(path) > 2:
+                print(f"\n{start} to {end} -> {', '.join(path[1:-1])}\n")
     else:
         if start not in stop_dict:
             print(f"{start} is not a valid stop")
