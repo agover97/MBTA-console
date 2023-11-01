@@ -176,4 +176,6 @@ I ran out of time to complete this challange. I was able to implement the requir
 
 12. Look for typos
 
+13. Create parameter file so API key isnt hard coded
+
 More items could be added to this list
